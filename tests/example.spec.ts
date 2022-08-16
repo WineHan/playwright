@@ -15,6 +15,13 @@ test.describe("my test suite", () => {
   });
 });
 
+// npx playwright test tests/example.spec.ts --grep @mySymbol
+test("some basic test @mySymbol", async ({ page }) => {
+    await page.goto("https://www.example.com");
+    const pageTitle = await page.locator("h1");
+    await expect(pageTitle).toContainText("Example Domain");
+  });
+
 test.skip("Working with Inputs", async ({ page }) => {
   await page.goto("https://www.pazzo.com.tw/login");
   await page.locator("#username").fill("username");
