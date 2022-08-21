@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test tests/example.spec.ts",
-    "test@head": "npx playwright test tests/example.spec.ts --header"
+    "test@head": "npx playwright test tests/example.spec.ts --header",
+    "test@C": "npx playwright test --config=playwright.config.ts --project=Chromium",
+    "test@reporter": "npx playwright test --config=playwright.config.ts --project=Chromium --reporter=html",
+    "test@mySymbol": "npx playwright test tests/example.spec.ts --grep @mySymbol"
   },
   "author": "",
   "license": "ISC",

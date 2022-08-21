@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { goHomePage, getElement } from "../helper";
 
-test.describe("my test suite", () => {
+test.describe.skip("my test suite", () => {
   test("some basic test", async ({ page }) => {
     await page.goto("https://www.example.com");
     const pageTitle = await page.locator("h1");
@@ -16,11 +17,11 @@ test.describe("my test suite", () => {
 });
 
 // npx playwright test tests/example.spec.ts --grep @mySymbol
-test("some basic test @mySymbol", async ({ page }) => {
-    await page.goto("https://www.example.com");
-    const pageTitle = await page.locator("h1");
-    await expect(pageTitle).toContainText("Example Domain");
-  });
+test.skip("some basic test @mySymbol", async ({ page }) => {
+  await page.goto("https://www.example.com");
+  const pageTitle = await page.locator("h1");
+  await expect(pageTitle).toContainText("Example Domain");
+});
 
 test.skip("Working with Inputs", async ({ page }) => {
   await page.goto("https://www.pazzo.com.tw/login");
@@ -42,4 +43,24 @@ test.skip("assertion", async ({ page }) => {
 
   const nonExistingElement = await page.locator("h5");
   await expect(nonExistingElement).not.toBeVisible();
+});
+
+test.describe.skip("beforeEach", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://www.example.com");
+  });
+
+  test("screenshots", async ({ page }) => {
+    await page.screenshot({ path: "screenshots.png", fullPage: true });
+  });
+
+  test("elementScreenshots", async ({ page }) => {
+    const element = await page.$("h1");
+    await element.screenshot({ path: "elementScreenshots.png" });
+  });
+});
+
+test("test helper function", async ({ page }) => {
+  await goHomePage(page);
+  await getElement(page);
 });
