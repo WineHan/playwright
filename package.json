@@ -8,7 +8,8 @@
     "test@head": "npx playwright test tests/example.spec.ts --headed --project=Chromium",
     "test@C": "npx playwright test --config=playwright.config.ts --project=Chromium",
     "test@reporter": "npx playwright test --config=playwright.config.ts --project=Chromium --reporter=html",
-    "test@mySymbol": "npx playwright test tests/example.spec.ts --grep @mySymbol"
+    "test@mySymbol": "npx playwright test tests/example.spec.ts --grep @mySymbol",
+    "test@e2e": "playwright test --config=e2e.config.ts --project=Chromium --headed"
   },
   "author": "",
   "license": "ISC",
