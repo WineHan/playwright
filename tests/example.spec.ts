@@ -60,25 +60,8 @@ test.describe.skip("beforeEach", () => {
   });
 });
 
-// debug
-test.skip("test helper function", async ({ page }) => {
+test("test helper function", async ({ page }) => {
   await goHomePage(page);
   // await page.pause()
   await getElement(page);
-});
-
-// parallel
-test.describe.parallel("parallel", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("https://www.example.com");
-  });
-
-  test("screenshots", async ({ page }) => {
-    await page.screenshot({ path: "screenshots.png", fullPage: true });
-  });
-
-  test("elementScreenshots", async ({ page }) => {
-    const element = await page.$("h1");
-    await element.screenshot({ path: "elementScreenshots.png" });
-  });
 });
