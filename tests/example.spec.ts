@@ -62,5 +62,6 @@ test.describe.skip("beforeEach", () => {
 
 test("test helper function", async ({ page }) => {
   await goHomePage(page);
+  // await page.pause()
   await getElement(page);
 });
